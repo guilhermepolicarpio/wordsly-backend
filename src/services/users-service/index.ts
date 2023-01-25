@@ -11,7 +11,9 @@ async function signIn(params: SignInParams): Promise<SignInResult> {
 
   const user = await validateEmail(email);
 
+
   await validatePassword(password, user.password);
+  console.log("depois validar")
 
   const token = await createSession(user.id);
 
@@ -56,7 +58,7 @@ async function createSession(userId: number) {
 }
 
 async function validatePassword(password: string, userPassword: string) {
-  const isPasswordValid = await bcrypt.compare(password, userPassword);
+   const isPasswordValid = await bcrypt.compare(password, userPassword);
   if (!isPasswordValid) throw invalidCredentialsError();
 }
 

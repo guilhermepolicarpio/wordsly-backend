@@ -10,6 +10,7 @@ export async function userSignIn(req: Request, res: Response) {
     const result = await userService.signIn({ email, password })
     return res.status(httpStatus.OK).send(result);
   } catch (error) {
+    console.log(error)
     return res.sendStatus(httpStatus.UNAUTHORIZED);
   }
 }
