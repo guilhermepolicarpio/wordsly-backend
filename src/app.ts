@@ -6,14 +6,16 @@ import { loadEnv, connectDb, disconnectDB } from "./config"
 
 loadEnv();
 
-import { userRouter } from './routers';
+import {answerRouter, userRouter } from './routers';
 
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use("/answer", answerRouter)
 app.use("/user", userRouter)
+
 
 export function init(): Promise<Express> {
     connectDb();

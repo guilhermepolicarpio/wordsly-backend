@@ -18,7 +18,6 @@ export async function userSignIn(req: Request, res: Response) {
 export async function userSignUp(req: Request, res: Response) {
   const { username, email, password } = req.body;
 
-
   try {
 
     const user = await userService.signUp({username, email, password });
@@ -28,7 +27,7 @@ export async function userSignUp(req: Request, res: Response) {
       email: user.email,
     })
   } catch (error) {
-    console.log(error)
+    console.log("error")
     return res.sendStatus(httpStatus.UNAUTHORIZED);
   }
 }
