@@ -16,11 +16,11 @@ export async function userSignIn(req: Request, res: Response) {
 }
 
 export async function userSignUp(req: Request, res: Response) {
-  const { username, email, password } = req.body;
-
+  const { username, email, password,userImage } = req.body;
+  console.log(username, email, password,userImage)
   try {
 
-    const user = await userService.signUp({username, email, password });
+    const user = await userService.signUp({username, email, password,userImage });
   
     return res.status(httpStatus.CREATED).json({
       id: user.id,

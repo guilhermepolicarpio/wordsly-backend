@@ -15,11 +15,11 @@ async function findByEmail(email: string, select?: Prisma.UserSelect) {
   return prisma.user.findUnique(params);
 }
 
-async function create(username: string, email: string,  password: string) {
+async function create(username: string, email: string,  password: string, userImage:string) {
 
     return prisma.user.create({
       data:{username,email,
-      password
+      password,userImage
       }
     });
   }

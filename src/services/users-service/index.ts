@@ -23,7 +23,7 @@ async function signIn(params: SignInParams): Promise<SignInResult> {
   };
 }
 
-async function signUp({ username, email, password }: CreateUserParams): Promise<User> {
+async function signUp({ username, email, password,userImage }: CreateUserParams): Promise<User> {
   await validateEmail(email);
 
   const hashedPassword = await bcrypt.hash(password, 12);
@@ -32,6 +32,7 @@ async function signUp({ username, email, password }: CreateUserParams): Promise<
     username,
       email,
      hashedPassword,
+     userImage
   );
   return createuser;
 }
@@ -70,7 +71,7 @@ type SignInResult = {
 };
 
 type GetValidateEmailResult = Pick<User, "id" | "email" | "password">;
-export type CreateUserParams = Pick<User, "username" | "email" | "password">;
+export type CreateUserParams = Pick<User, "username" | "email" | "password" | "userImage">;
 
 const userService = {
   signIn,
